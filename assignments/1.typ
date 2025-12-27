@@ -37,12 +37,21 @@
   ]
 ]
 
-= Apply Functions
+#place(center + horizon)[
+  #text(size: 36pt, weight: "black")[
+    #smallcaps()[Microprocessor-based \ Systems Design]
+  ]
+  #grid(columns: 2, column-gutter: 1em, row-gutter: 1em, align: left)[Nitish][*10230239*][Angad Dhawan][*10230240*][Arnav Goyal][*102303242*][Harith Khanna][*102303243*][Himanshu Sardana][*102303244*]
+]
 
-#v(1cm)
+#pagebreak()
+#outline()
+#pagebreak()
 
-#question[
-  Write a program that scrapes the titles and URLs of the top 10 articles from a news website of your choice. The program should output the results in a structured format (e.g., JSON or CSV).
+= Web Scraping
+
+#question()[
+  Scrape the titles of the top 5 trending repositories on GitHub using Python and the BeautifulSoup library.
 ]
 
 #smallcaps()[*Solution*]
@@ -50,15 +59,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_top_articles(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
+BASE_URL = "https://github.com/trending"
 
-    articles = []
-    for item in soup.select('article')[:10]:  # Adjust the selector based on the website structure
-        title = item.find('h2').get_text(strip=True)
-        link = item.find('a')['href']
-        articles.append({'title': title, 'url': link})
-
-    return articles
 ```
